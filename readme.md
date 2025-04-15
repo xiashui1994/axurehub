@@ -30,7 +30,7 @@ docker build -t axurehub .
 ```
 docker run -d -p 8000:8000 --name axurehub  axurehub
 ```
-3. 宿主机访问：htttp://127.0.0.1:8000
+3. 宿主机访问：http://127.0.0.1:8000
 
 > 托管文件在www文件加下，可将此文件映射到宿主机，可做备份使用。
 > ```

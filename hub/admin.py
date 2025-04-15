@@ -66,7 +66,7 @@ class ResourceAdmin(admin.ModelAdmin):
                             right_file = file.encode('cp437').decode('gbk')
                         shutil.move(os.path.join(settings.MEDIA_ROOT, file), os.path.join(www_dir, right_file))
 
-                    obj.url = settings.WWW_URL + no + "/" + zip_file_name + "/index.html"
+                    obj.url = settings.WWW_URL + no + "/" + zip_file_name + "/" + zip_file_name + "/index.html"
                     print(obj.url)
                 zip.close()
                 
