@@ -26,7 +26,7 @@ class BuAdmin(admin.ModelAdmin):
 class PrototypeAdmin(admin.ModelAdmin):
     list_display = ('name', 'bu', 'get_resource_no', 'get_tags', 'create_time', 'update_time', 'attachment', 'get_view_url')
 
-    search_fields = ['name', 'bu']
+    search_fields = ['name', 'bu__name']
 
     list_filter = [ 'bu__name', 'tags__name']
 
