@@ -1,5 +1,5 @@
 # pull official base image
-FROM registry.cn-hangzhou.aliyuncs.com/library/python:3.8.3-alpine
+FROM registry.aliyuncs.com/library/python:3.8.3-alpine
 
 # set work directory
 WORKDIR /usr/src/app
