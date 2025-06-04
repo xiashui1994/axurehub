@@ -39,14 +39,25 @@ class ResourceAdmin(admin.ModelAdmin):
 
     def save_model(self, request, obj, form, change):
         if form.is_valid():
-            # 设置默认no值
-            timestamp = int(round(time.time() * 1000))
-            obj.no = timestamp
+            # 判断是否为更新操作
+            if change:
+                # 获取原始对象
+                original_obj = models.Resource.objects.get(pk=obj.pk)
+                # 保留原有的资源ID
+                obj.no = original_obj.no
+            else:
+                # 新建资源时设置新的资源ID
+                timestamp = int(round(time.time() * 1000))
+                obj.no = timestamp
             if form.cleaned_data['path'] is not None:
                 print(form.cleaned_data['path'])
-                no = str(timestamp)
+                no = str(obj.no)  # 使用对象的no，而不是timestamp
                 zip = zipfile.ZipFile(form.cleaned_data['path'])
                 www_dir = os.path.join(settings.WWW_ROOT, no)
+                
+                # 如果是更新操作，先删除原有目录
+                if change and os.path.exists(www_dir):
+                    shutil.rmtree(www_dir)
                 
                 target_encoding = 'utf-8'
                 if zip:

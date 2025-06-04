@@ -1,0 +1,14 @@
+.DS_Store
+db/
+media/
+www/
+
+# Editor directories and files
+.project
+.idea
+.hbuilderx
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw*
